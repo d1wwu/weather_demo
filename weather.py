@@ -29,7 +29,7 @@ def get_weather(city: str) -> Weather:
     except requests.exceptions.RequestException:
         raise ApiServiceError
     return Weather(
-        temperature=response["main"]["temp"],
+        temperature=round(response["main"]["temp"]),
         weather_type=response["weather"][0]["description"],
         sunrise=datetime.fromtimestamp(response["sys"]["sunrise"]),
         sunset=datetime.fromtimestamp(response["sys"]["sunset"]),
